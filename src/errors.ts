@@ -6,6 +6,9 @@ export const HTTP = {
   INTERNAL_ERROR: 500,
   OK: 200,
   CREATED: 201,
+  CONFLICT: 409,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
 } as const;
 
 export class AppError extends Error {
@@ -26,5 +29,23 @@ export class BadRequestError extends AppError {
 export class NotFoundError extends AppError {
   constructor(message = 'Ресурс не найден') {
     super(message, HTTP.NOT_FOUND);
+  }
+}
+
+export class ConflictError extends AppError {
+  constructor(message = 'Ресурс уже существует') {
+    super(message, HTTP.CONFLICT);
+  }
+}
+
+export class UnauthorizedError extends AppError {
+  constructor(message = 'Неправильные почта или пароль') {
+    super(message, HTTP.UNAUTHORIZED);
+  }
+}
+
+export class ForbiddenError extends AppError {
+  constructor(message = 'Доступ запрещён') {
+    super(message, HTTP.FORBIDDEN);
   }
 }

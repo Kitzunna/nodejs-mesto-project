@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import Card from '../models/card';
-import { HTTP, BadRequestError, NotFoundError } from '../errors';
+import { HTTP, BadRequestError, NotFoundError, ForbiddenError } from '../errors';
 
 export async function getCards(_req: Request, res: Response, next: NextFunction) {
   try {
@@ -33,14 +33,21 @@ export async function createCard(req: Request, res: Response, next: NextFunction
 export async function deleteCard(req: Request, res: Response, next: NextFunction) {
   try {
     const { cardId } = req.params;
-    const card = await Card.findByIdAndDelete(cardId);
-    if (!card) {
-      return next(new NotFoundError('Карточка не найдена'));
+
+    const card = await Card.findById(cardId).orFail();
+
+    if (card.owner.toString() !== req.user._id.toString()) {
+      return next(new ForbiddenError('Нельзя удалять чужую карточку'));
     }
+
+    await card.deleteOne();
     return res.status(HTTP.OK).send(card);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
       return next(new BadRequestError('Некорректный формат id карточки'));
+    }
+    if (err instanceof mongoose.Error.DocumentNotFoundError) {
+      return next(new NotFoundError('Карточка не найдена'));
     }
     return next(err);
   }
