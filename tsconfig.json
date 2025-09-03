@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "target": "es6",                                  
+    "target": "es6",
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
     "baseUrl": "./src",
@@ -15,10 +15,11 @@
     /* Type Checking */
     "strict": true,                                      /* Enable all strict type-checking options. */
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"]                                /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts", "src/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 
 app.use((req: Request, _res: Response, next: NextFunction) => {
-  // @ts-ignore
   req.user = {
     _id: '68b6e325263a8de771eb58d9',
   };
@@ -26,7 +25,6 @@ app.use('*', (_req: Request, _res: Response, next: NextFunction) => {
   next(new NotFoundError('Ресурс не найден'));
 });
 
-// eslint-disable-next-line no-unused-vars
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err?.statusCode ?? HTTP.INTERNAL_ERROR;
   const message = status === HTTP.INTERNAL_ERROR

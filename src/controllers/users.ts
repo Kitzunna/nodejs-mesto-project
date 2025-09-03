@@ -44,7 +44,6 @@ export async function createUser(req: Request, res: Response, next: NextFunction
 export async function updateProfile(req: Request, res: Response, next: NextFunction) {
   try {
     const { name, about } = req.body;
-    // @ts-ignore
     const userId = req.user._id;
 
     const user = await User.findByIdAndUpdate(
@@ -71,7 +70,6 @@ export async function updateProfile(req: Request, res: Response, next: NextFunct
 export async function updateAvatar(req: Request, res: Response, next: NextFunction) {
   try {
     const { avatar } = req.body;
-    // @ts-ignore
     const userId = req.user._id;
 
     const user = await User.findByIdAndUpdate(

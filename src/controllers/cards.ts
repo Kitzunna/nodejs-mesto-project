@@ -15,7 +15,6 @@ export async function getCards(_req: Request, res: Response, next: NextFunction)
 export async function createCard(req: Request, res: Response, next: NextFunction) {
   try {
     const { name, link } = req.body;
-    // @ts-ignore
     const owner = req.user._id;
 
     const card = await Card.create({ name, link, owner });
@@ -50,7 +49,6 @@ export async function deleteCard(req: Request, res: Response, next: NextFunction
 export async function likeCard(req: Request, res: Response, next: NextFunction) {
   try {
     const { cardId } = req.params;
-    // @ts-ignore
     const userId = req.user._id;
 
     const card = await Card.findByIdAndUpdate(
@@ -74,7 +72,6 @@ export async function likeCard(req: Request, res: Response, next: NextFunction) 
 export async function dislikeCard(req: Request, res: Response, next: NextFunction) {
   try {
     const { cardId } = req.params;
-    // @ts-ignore
     const userId = req.user._id;
 
     const card = await Card.findByIdAndUpdate(
