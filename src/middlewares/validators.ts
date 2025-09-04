@@ -1,7 +1,6 @@
 import { celebrate, Joi, Segments } from 'celebrate';
 
-export const urlRegex =
-  /^https?:\/\/(www\.)?([-a-zA-Z0-9]{1}[-a-zA-Z0-9.]*\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}([\-._~:/?#[\]@!$&'()*+,;=0-9]*)?$/;
+export const urlRegex = /^https?:\/\/(www\.)?([-a-zA-Z0-9]{1}[-a-zA-Z0-9.]*\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}([-._~:/?#[\]@!$&'()*+,;=0-9]*)?$/;
 
 export const validateSignin = celebrate({
   [Segments.BODY]: Joi.object({

@@ -4,8 +4,11 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import {
-  HTTP, BadRequestError, NotFoundError, ConflictError, UnauthorizedError,
-
+  HTTP,
+  BadRequestError,
+  NotFoundError,
+  ConflictError,
+  UnauthorizedError,
 } from '../errors';
 
 export async function getUsers(_req: Request, res: Response, next: NextFunction) {

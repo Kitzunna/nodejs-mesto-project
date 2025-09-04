@@ -9,8 +9,7 @@ export interface IUser extends Document {
   password: string;
 }
 
-const urlRegex =
-  /^https?:\/\/(www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?#?$/;
+const urlRegex = /^https?:\/\/(www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?#?$/;
 
 const userSchema = new Schema<IUser>(
   {

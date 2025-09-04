@@ -51,9 +51,9 @@ const MONGO_URL = 'mongodb://localhost:27017/mestodb';
 mongoose
   .connect(MONGO_URL)
   .then(() => {
-    console.log('MongoDB connected');
+    console.warn('MongoDB connected');
     app.listen(Number(PORT), () => {
-      console.log(`Server: http://localhost:${PORT}`);
+      console.warn(`Server: http://localhost:${PORT}`);
     });
   })
   .catch((err) => {

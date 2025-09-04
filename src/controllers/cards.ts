@@ -1,7 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
+import {
+  Request,
+  Response,
+  NextFunction,
+} from 'express';
 import mongoose from 'mongoose';
 import Card from '../models/card';
-import { HTTP, BadRequestError, NotFoundError, ForbiddenError } from '../errors';
+import {
+  HTTP,
+  BadRequestError,
+  NotFoundError,
+  ForbiddenError,
+} from '../errors';
 
 export async function getCards(_req: Request, res: Response, next: NextFunction) {
   try {
